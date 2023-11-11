@@ -1,6 +1,6 @@
 from django.db import models
 from phonenumber_field.modelfields import PhoneNumberField
-from validators import *
+from .validators import *
 
 # Create your models here.
 
@@ -8,8 +8,8 @@ class Person(models.Model):
     '''
     Modelo base para personas
     '''
-    first_name = models.CharField(max_length=50,validators=[validate_only_letters('invalid_name')])
-    last_name = models.CharField(max_length=50,db_index=True,validators=[validate_only_letters('invalid_last_name')])
+    first_name = models.CharField(max_length=50,validators=[validate_only_letters])
+    last_name = models.CharField(max_length=50,db_index=True,validators=[validate_only_letters])
     phone_number = PhoneNumberField(blank=True)
     dni = models.CharField(max_length=20,validators=[validate_dni])
     birth_date = models.DateField(null=True,blank=True,db_index=True)

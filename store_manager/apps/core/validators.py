@@ -1,5 +1,7 @@
 from django.core.exceptions import ValidationError
 from django.utils import timezone
+from django.utils.translation import gettext as _
+
 
 def validate_dni(value):
     if len(value) < 7 and len(value) > 8:
@@ -8,11 +10,11 @@ def validate_dni(value):
             code='invalid_dni'
         )
 
-def validate_only_letters(value,code='invalid_input'):
+def validate_only_letters(value):
     if not value.isalpha():
         raise ValidationError(
             _('Este campo solo debe contener letras.'),
-            code=code
+            code='invalid_input'
         )
         
 def validate_birth_date(value):
