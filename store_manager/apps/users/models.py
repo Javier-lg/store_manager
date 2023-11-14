@@ -15,7 +15,7 @@ class User(Person,AbstractUser):
         ('EMPLEADO','EMPLEADO')
     ]
 
-    object = UserManager()
+    objects = UserManager()
     role = models.CharField(max_length=15, choices=ROLE, default='EMPLEADO', null=True, blank=True)
     username = models.CharField(max_length=50, unique=True)
     
